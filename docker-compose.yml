@@ -20,7 +20,7 @@ services:
 #      - ./frontend:/usr/app
   proxy:
     image: nginx:1.17
-    restart: unless-stopped
+#    restart: unless-stopped
     ports:
       - "80:80"
     volumes:
