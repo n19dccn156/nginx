@@ -3,20 +3,23 @@ version: "3.3"
 services:
   opa:
     image: openpolicyagent/opa:latest
+#    image: openpolicyagent/opa:latest-envoy
     container_name: opa
     platform: linux/amd64
     ports:
       - "8181:8181"
     volumes:
       - ./policy:/app/policy
+      - ./data:/app/data
+    restart: unless-stopped
     command: [
-      "run",
-      "--server",
-      "--addr",
-      "0.0.0.0:8181",
-#      "--config-file",
-#      "/app/policy/config.yaml",
-      "/app/policy/api.rego"
+      "run", "--server",
+      "--addr", "0.0.0.0:8181",
+      "--log-level", "debug",
+      "--log-level", "info",
+      "--authorization", "basic",
+#            "--config-file",
+      "/app/policy/auth.rego",
     ]
   backend:
     container_name: backend

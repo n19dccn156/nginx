@@ -8,26 +8,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
-public class IndexController {
+@RequestMapping("/s1")
+public class Service1Controller {
 
     @GetMapping("/get")
     public String get() {
-        return "GET";
+        return "GET Service 1";
     }
 
     @PostMapping("/post")
     public String post() {
-        return "POST";
+        return "POST Service 1";
     }
 
     @PutMapping("/put")
     public String put() {
-        return "PUT";
+        return "PUT Service 1";
     }
 
     @DeleteMapping("/del")
     public String delete() {
-        return "DELETE";
+        return "DELETE Service 1";
     }
 }
